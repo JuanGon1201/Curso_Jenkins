@@ -34,6 +34,7 @@ Feature: Validar el CRUD de usuarios sobre el API reqres in
     When Se envia la peticion al metodo delete single user
     Then Se realiza la eliminacion del usuario
 
+    # Comentario de prueba # 1
   @Test
   Scenario: Eliminar un usuario por el metodo DELETE - API reqres in # 2
     When Se envia la peticion al metodo delete single user
