@@ -10,12 +10,18 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Paso de test"
+                echo "Paso de test 2"
             }
         }
         stage('Deploy') {
             steps {
                 echo "Paso de deploy"
             }
+        }
+    }
+    post {
+        always {
+            
         }
     }
 }
