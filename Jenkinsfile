@@ -1,19 +1,21 @@
-pipelines {
-  agent any
+pipeline {
+    agent any
 
-  stages ("build"){
-      step {
-        echo "paso de setp build"
-      }
-  }
-  stages ("test"){
-      step {
-        echo "paso de setp test"
-      }
-  }
-  stages ("deploy"){
-      step {
-        echo "paso de setp deploy"
-      }
-  }
+    stages {  // "stages" agrupa todos los "stage"
+        stage('Build') {  // Cada etapa es un "stage"
+            steps {  // "steps" (en plural) para las acciones
+                echo "Paso de build"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "Paso de test"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo "Paso de deploy"
+            }
+        }
+    }
 }
