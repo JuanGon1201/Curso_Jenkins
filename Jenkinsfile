@@ -1,25 +1,38 @@
 pipeline {
     agent any
+    
+    
+    tools {
+        jdk 'jdk11'
+        //gradle 'Gradle 9.0' // Este nombre debe coincidir con el configurado en Jenkins
+    }
 
-    stages {  // "stages" agrupa todos los "stage"
-        stage('Build') {  // Cada etapa es un "stage"
-            steps {  // "steps" (en plural) para las acciones
-                echo "Paso de build"
-                    sh "./gradlew clean build"
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    sh '''
+                        java -version
+                        ./gradlew clean build
+                    '''
+                }
             }
         }
+
         stage('Test') {
             steps {
-                echo "Paso de test"
-                sh "./gradlew clean test"
+                sh './gradlew test'
             }
         }
+
         stage('Deploy') {
             steps {
-                echo "Paso de deploy"
+                echo 'Paso de deploy'
             }
         }
     }
+
     post {
         always {
             echo "Pipeline completado - Estado: ${currentBuild.result ?: 'SUCCESS'}"
